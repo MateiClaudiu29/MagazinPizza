@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MagazinPizza"
+        xmlns:GestiuneMagazin="clr-namespace:GestiuneMagazin;assembly=GestiuneMagazin" x:Class="MagazinPizza.ProduseVandute"
+        mc:Ignorable="d"
+        Title="Produse Vandute" Height="440.891" Width="275.304" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="produseComandateViewSource" d:DesignSource="{d:DesignInstance {x:Type GestiuneMagazin:ProduseComandate}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" DataContext="{StaticResource produseComandateViewSource}">
+        <DataGrid x:Name="produseComandateDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn x:Name="produsComandatIdColumn" Binding="{Binding ProdusComandatId}" Header="Numar Comenzi" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="comandaIdColumn" Binding="{Binding ComandaId}" Header="Comanda Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="produsIDColumn" Binding="{Binding ProdusID}" Header="Produs ID" Width="SizeToHeader"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
